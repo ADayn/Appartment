@@ -1,0 +1,41 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Appartment</title>
+  <meta name="description" content="The frontend for the reciept scanner">
+  <meta name="author" content="SitePoint">
+  <script type="text/javascript" src="js/script.js"></script>
+  <script type="text/javascript">
+  	"use strict";
+
+	console.log("loaded");
+
+	function onLoad() {
+		console.log("It loaded!");
+		document.body.innerHTML += this.responseText + "<br>";
+	}
+
+	function click2() {
+		console.log("clicked");
+		var testReq = new XMLHttpRequest();
+		testReq.addEventListener("load", onLoad);
+		var url = "test.txt",
+			url2 = "test2/test2.txt",
+			url3 = "api/receipts";
+		testReq.open(document.getElementsByTagName("input")[0].value, url3);
+		testReq.send();
+	}
+  </script>
+  <link rel="stylesheet" href="style/main.css">
+</head>
+
+<body>
+  Testing
+  <input type="text" name="abcd">
+  <button type="button" onclick="click2();">Test</button>
+  <br>
+</body>
+</html>
