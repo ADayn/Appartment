@@ -138,4 +138,4 @@ $	service apache2 restart
   - If you go to http://localhost on a browser, you should now see a simple page that has a test button. Currently, all that happens when it is clicked is that a request of the type that is typed into the input box is sent to the server, and Python sends back a string telling you what request was sent. Test it out!
 
 ### Possible issues
-	- If you get a 500 (Internal Server Error) trying to press test on the test page, check the console.log and the error file for apache (/var/log/apache2/error.log for me).
+- If you get a 500 (Internal Server Error) trying to press test on the test page, check the console.log and the error file for apache (/var/log/apache2/error.log for me).
