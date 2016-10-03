@@ -91,10 +91,10 @@ $	sudo make install
   ```shell
 $	sudo touch {APACHE_HOME}/mods-available/wsgi.load
 ```
-  -	Add the following line to this new file, using the path to the ".so" file found from the other .load file:
+  -	Add the following lines to this new file, using the path to the ".so" file found from the other .load file and your local install of .pyenv (usually ~/.pyenv):
   ```
 	LoadModule wsgi_module /usr/lib/apache2/modules/mod_wsgi.so
-  WSGIPythonHome /home/albert/.pyenv/versions/3.5.2
+	WSGIPythonHome /PATH/TO/.pyenv/versions/3.5.2
 ```
   -	Enable the module
   ```shell
@@ -136,3 +136,6 @@ $	sudo nano {APACHE_HOME}/sites-available/000-default.conf
 $	service apache2 restart
 ```
   - If you go to http://localhost on a browser, you should now see a simple page that has a test button. Currently, all that happens when it is clicked is that a request of the type that is typed into the input box is sent to the server, and Python sends back a string telling you what request was sent. Test it out!
+
+### Possible issues
+	- If you get a 500 (Internal Server Error) trying to press test on the test page, check the console.log and the error file for apache (/var/log/apache2/error.log for me).
