@@ -1,26 +1,18 @@
-#!/home/albert/.pyenv/shims/python
-
-# Turn on debug mode.
-import cgitb
-cgitb.enable()
-
 # Connect to the database.
 import pymysql
-
-import os
 
 def application(environ, start_response):
 	# MySql connection
 	# Get password:
-	password = "";
+	password = ""
 	with open (environ["PASS_FILE"], "r") as passFile:
 		password=passFile.read()
-
 	conn = pymysql.connect(
 		db = 'example',
 		user = 'root',
 		passwd = password,
-		host = 'localhost')
+		host = 'localhost'
+	)
 	c = conn.cursor()
 
 	# Insert some example data.
@@ -35,8 +27,8 @@ def application(environ, start_response):
 	output = "You made a " + environ["REQUEST_METHOD"] + " request!"
 
 	status = '200 OK'
-	response_headers = [('Content-type', 'text/plain'),
-						('Content-Length', str(len(output)))]
+	response_headers = [('Content-type', 'text/plain')]
 	start_response(status, response_headers)
 
-	return [output.encode('ascii')]
+	# return [str(c.execute("SELECT * FROM numbers")).encode('ascii')]
+	return [str(environ).encode('ascii')]

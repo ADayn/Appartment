@@ -15,7 +15,7 @@
 
 	function onLoad() {
 		console.log("It loaded!");
-		document.body.innerHTML += this.responseText + "<br>";
+		document.body.innerHTML += this.responseText + "<br><br>";
 	}
 
 	function click2() {
@@ -28,6 +28,38 @@
 		testReq.open(document.getElementsByTagName("input")[0].value, url3);
 		testReq.send();
 	}
+
+	function click3() {
+		var name = document.getElementsByTagName("input")[1].value;
+		if (!name) {
+			console.log("Valid name needed!");
+			return;
+		}
+		console.log("clicked add user");
+		var addReq = new XMLHttpRequest();
+		addReq.addEventListener("load", onLoad);
+		var url4 = "api/users";
+		addReq.open("POST", url4);
+		// addReq.setRequestHeader("Content-type", "text/name");
+		addReq.send(name);
+		console.log(name)
+	}
+
+	function click4() {
+		var name = document.getElementsByTagName("input")[1].value;
+		if (!name) {
+			console.log("Valid name needed!");
+			return;
+		}
+		console.log("clicked delete user");
+		var addReq = new XMLHttpRequest();
+		addReq.addEventListener("load", onLoad);
+		var url4 = "api/users";
+		addReq.open("DELETE", url4);
+		// addReq.setRequestHeader("Content-type", "text/name");
+		addReq.send(name);
+		console.log(name)
+	}
   </script>
   <link rel="stylesheet" href="style/main.css">
 </head>
@@ -36,6 +68,10 @@
   Testing
   <input type="text" name="abcd">
   <button type="button" onclick="click2();">Test</button>
+  <br>
+  <input type="text" name="abcd" value="Albert Dayn">
+  <button type="button" onclick="click3();">Add User</button>
+  <button type="button" onclick="click4();">Delete User</button>
   <br>
 </body>
 </html>
