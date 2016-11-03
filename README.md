@@ -52,9 +52,14 @@ $	pip3 install pymysql
 $	mysql -u root -p
 ```
   ```SQL
-$$	CREATE DATABASE example;
-$$	USE example;
-$$	CREATE TABLE numbers (num INT, word VARCHAR(20));
+$$	CREATE DATABASE appartment;
+$$	USE appartment;
+$$	CREATE TABLE Users (user_id INT UNSIGNED NOT NULL AUTO_INCREMENT, name VARCHAR(63) NOT NULL, PRIMARY KEY (user_id));
+$$  CREATE TABLE Stores (store VARCHAR(63) NOT NULL, PRIMARY KEY (store));
+$$  CREATE TABLE Catagories (catagory VARCHAR(64) NOT NULL, PRIMARY KEY (catagory));
+$$  CREATE TABLE Items (item VARCHAR(255) NOT NULL, catagory VARCHAR(63) NOT NULL, consumable BIT(1), PRIMARY KEY (item), Foreign Key(catagory) references Catagories (catagory));
+$$  CREATE TABLE Receipts (receipt_id INT UNSIGNED NOT NULL AUTO_INCREMENT, image_location TEXT, date DATETIME, store VARCHAR(63) NOT NULL, buyer_id INT UNSIGNED NOT NULL, PRIMARY KEY (receipt_id), Foreign Key(store) references Stores (store), Foreign Key(buyer_id) references Users(user_id));
+$$  CREATE TABLE Purchases (item VARCHAR(255) NOT NULL, receipt_id INT UNSIGNED NOT NULL, owner_id INT UNSIGNED NOT NULL, quantity INT UNSIGNED NOT NULL DEFAULT 1, price DECIMAL(10, 5) NOT NULL, PRIMARY KEY (item, receipt_id), Foreign Key(item) references Items(item), Foreign Key (receipt_id) references Receipts(receipt_id), Foreign Key(owner_id) references Users(user_id));
 ```
   -	ctrl-D to exit
   
