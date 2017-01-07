@@ -3,8 +3,8 @@
 The App(artment) will be a webapp that keeps track of receipts, shared expenses, cooking schedules, and chores. Once the basic features are completed, work will start on image recognition so that receipts can be scanned instead of entered manually. It is based on a Python backend that talks directly to a wsgi server (without the need of a framework like Django), an SQL database, and a javascript front end. The server this will be developed for is Apache 2 with [mod_wsgi](https://modwsgi.readthedocs.io/en/develop/) as the wsgi link. Although neither the backend nor the frontend are setup yet, you can setup the server for it as follows:
 
 ### Setup
-`$` Represents commands to run in terminal
-`$$` represents commands in a program's own command line environment
+`$` Represents commands to run in terminal.
+`$$` Represents commands in a program's own command line environment
 
 Pick a location to pull this repo to. This will be refered to as `{APP_HOME}`.
 
@@ -141,6 +141,3 @@ $	sudo nano {APACHE_HOME}/sites-available/000-default.conf
 $	service apache2 restart
 ```
   - If you go to http://localhost on a browser, you should now see a simple page that has a test button. Currently, all that happens when it is clicked is that a request of the type that is typed into the input box is sent to the server, and Python sends back a string telling you what request was sent. Test it out!
-
-### Possible issues
-- If you get a 500 (Internal Server Error) trying to press test on the test page, check the console.log and the error file for apache (/var/log/apache2/error.log for me).
